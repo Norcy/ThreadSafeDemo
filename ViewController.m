@@ -35,6 +35,12 @@
 {
 	for (int i = 0; i < 1000; ++i)
 	{
+        // 只打开 if 和 else 的第一行的注释，模拟 NSArray 不加锁时的读写冲突
+        // 只打开 if 和 else 的第二行的注释，模拟 NSArray 加NSLock时的读写冲突
+        // 只打开 if 和 else 的第三行的注释，模拟 NSArray 加GCD锁时的读写冲突
+        // 只打开 if 和 else 的第四行的注释，模拟 NSMutableArray 不加锁时的读写冲突
+        // 只打开 if 和 else 的第五行的注释，模拟 NSMutableArray 加NSLock时的读写冲突
+        // 只打开 if 和 else 的第六行的注释，模拟 NSMutableArray 加GCD锁时的读写冲突
 		if (arc4random() % 4) // 写的频率大于读的频率
 		{
 			dispatch_async(dispatch_queue_create("NorcyLock", DISPATCH_QUEUE_CONCURRENT), ^{
